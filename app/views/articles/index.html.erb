@@ -6,21 +6,10 @@
 
 <div class="row">
   <% @articles.each do |article| %>
-  <% if user_signed_in? && current_user.id == article.user_id %>
-    <div class="col s12 m6 offset-m3">
-      <div class="card red lighten-1 card-panel hoverable">
-        <div class="card-content white-text">
-          <span class="card-title"><%= article.title %></span>
-          <span class="writer"><b>投稿者：<%= article.user.nickname %></b></span>
-          <p><%= simple_format(article.article) %></p>
-        </div>
-        <div class="card-action">
-          <%= link_to '削除', "/articles/#{article.id}", method: :delete %>
-          <%= link_to '編集', "/articles/#{article.id}/edit", method: :get %>
-        </div>
-      </div>
-    </div>
-    <% end %>
+
+    <%= render @articles %>
+
+
   <% end %>
 </div>
 <ul class="text-align: center"><%= paginate(@articles) %></ul>

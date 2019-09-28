@@ -1,15 +1,15 @@
 
       <div class="row">
-          <%= form_tag('/articles', method: :post, class: "col s6 offset-m3") do %>
+          <%= form_with model: @article, local: true, method: :post, class: "col s6 offset-m3" do |f|%>
             <div class="row">
               <div class="input-field col s6">
-                <input id="input_text" type="text" data-length="10" name="title">
+                <%= f.text_field :title %>
                 <label for="input_text">タイトル</label>
               </div>
             </div>
             <div class="row">
               <div class="input-field col s12">
-                <textarea id="textarea1" class="materialize-textarea" data-length="200" name="article"></textarea>
+                <%= f.text_field :article %>
                 <label for="textarea1">本文</label>
               </div>
             </div>
