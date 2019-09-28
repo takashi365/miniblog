@@ -1,16 +1,9 @@
-
-
-  <div>
-      <h1 class="center-align">開発日誌</h1>
-  </div>
+<div>
+  <h1 class="center-align">開発日誌</h1>
+</div>
 
 <div class="row">
-  <% @articles.each do |article| %>
-
-    <%= render @articles %>
-
-
-  <% end %>
+  <%= render @articles %>
 </div>
 <ul class="text-align: center"><%= paginate(@articles) %></ul>
 <script type="text/javascript" src="./app.js"></script>
