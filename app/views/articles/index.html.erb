@@ -1,30 +1,27 @@
- <nav class="#03a9f4 light-blue">
-    <div class="nav-wrapper">
-      <a href="#" class="brand-logo text-align: center">ミニアプリブログ</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="sass.html">新規登録</a></li>
-        <li><a href="badges.html">ログイン</a></li>
-        <li><a href="collapsible.html">投稿</a></li>
-      </ul>
-    </div>
-  </nav>
+
 
   <div>
       <h1 class="center-align">開発日誌</h1>
   </div>
 
 <div class="row">
+  <% @articles.each do |article| %>
+  <% if user_signed_in? && current_user.id == article.user_id %>
     <div class="col s12 m6 offset-m3">
-      <div class="card #01579b light-blue darken-4 card-panel hoverable">
+      <div class="card red lighten-1 card-panel hoverable">
         <div class="card-content white-text">
-          <span class="card-title">記事タイトル</span>
-          <p>本文のスペース</p>
+          <span class="card-title"><%= article.title %></span>
+          <span class="writer"><b>投稿者：<%= article.user.nickname %></b></span>
+          <p><%= simple_format(article.article) %></p>
         </div>
         <div class="card-action">
-          <a href="#">削除</a>
-          <a href="#">編集</a>
+          <%= link_to '削除', "/articles/#{article.id}", method: :delete %>
+          <%= link_to '編集', "/articles/#{article.id}/edit", method: :get %>
         </div>
       </div>
     </div>
-  </div>
+    <% end %>
+  <% end %>
+</div>
+<ul class="text-align: center"><%= paginate(@articles) %></ul>
 <script type="text/javascript" src="./app.js"></script>

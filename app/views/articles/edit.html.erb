@@ -1,0 +1,25 @@
+        <div class="row">
+          <%= form_tag("/articles/#{@article.id}", method: :patch, class: "col s6 offset-m3") do %>
+            <div>
+              <h3 class="center-align">編集する</h3>
+            </div>
+            <div class="row">
+              <div class="input-field col s6">
+                <input id="input_text" type="text" data-length="10" name="title" value="<%= @article.title %>">
+                <label for="input_text">タイトル</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <textarea cols="30" name="text" placeholder="text" rows="10"><%= @article.article %></textarea>
+                <label for="textarea1">本文</label>
+              </div>
+            </div>
+            <button class="btn waves-effect waves-light" type="submit" name="action">送信
+                <i class="material-icons right"></i>
+              </button>
+          <% end %>
+        </div>
+
+    <script type="text/javascript" src="./app.js"></script>
+  

@@ -19,6 +19,23 @@
 
   </head>
 
+   <nav class="lighten-4">
+    <div class="nav-wrapper">
+      <a href="/" class="brand-logo text-align: center">ミニアプリブログ</a>
+      <% if user_signed_in? %>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+      <li><a href="/articles/new">投稿</a></li>
+      </ul>
+      <% else %>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><%= link_to "ログイン", new_user_session_path, class: 'post' %></li>
+        <li><%= link_to "新規登録", new_user_registration_path, class: 'post' %></li>
+      </ul>
+      <% end %>
+    </div>
+  </nav>
+
   <body>
     <%= yield %>
   </body>

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   root to: "articles#index"
-  get 'articles' => 'articles#index'
-
+  resources :articles, except: [:show]
 end
